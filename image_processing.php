@@ -5,8 +5,7 @@ $im1 = new Image();
 $im1->getImage('/home/oxana/projects/TsOS/lectures/pictures/1.jpg'); //  загрузка фото
 
 $im2 = new Image();
-$im2->getImage('/home/oxana/projects/TsOS/lectures/pictures/2.jpg'); //  загрузка фото
-
+ec  
 $im3 = new Image();
 $im3->getImage('/home/oxana/projects/TsOS/lectures/pictures/6.jpg');
 
@@ -349,20 +348,20 @@ function luminanceSlice($im){ // получение новых значений 
 
 }
 
-$add_images = new Image('/home/oxana/projects/TsOS/lectures/pictures/add_images.jpg', $im1->getWidth(), $im1->getHeight(), addImages($im1, $im2)); // сложение двух изображений
-$sub_images = new Image('/home/oxana/projects/TsOS/lectures/pictures/sub_images.jpg', $im7->getWidth(), $im7->getHeight(), subtractImages($im8, $im7)); //вычитание двух изображений
-$add = new Image('/home/oxana/projects/TsOS/lectures/pictures/add.jpg', $im8->getWidth(), $im8->getHeight(),addConstant($im8, 105)); //добавление константы
-$multiplication = new Image('/home/oxana/projects/TsOS/lectures/pictures/multiplicate.jpg', $im1->getWidth(), $im1->getHeight(), multiplicateConstant($im1, 0.75)); // умножение на константу
-$masling = new Image('/home/oxana/projects/TsOS/lectures/pictures/masking.jpg',$im5->getWidth(), $im5->getHeight(), masking($im5)); // маскирование
-
-//логические операции
-$not = new Image('/home/oxana/projects/TsOS/lectures/pictures/not.jpg',$im4->getWidth(), $im4->getHeight(), notFunc($im4));
-$xor = new Image('/home/oxana/projects/TsOS/lectures/pictures/xor.jpg',$im4->getWidth(), $im4->getHeight(), xorFunc($im3, $im4));
-$or = new Image('/home/oxana/projects/TsOS/lectures/pictures/or.jpg',$im4->getWidth(), $im4->getHeight(), orFunc($im3, $im4));
-$and = new Image('/home/oxana/projects/TsOS/lectures/pictures/and.jpg',$im4->getWidth(), $im4->getHeight(), andFunc($im3, $im4));
-
-//пилообразный срез
-$luminanceSlice = new Image('/home/oxana/projects/TsOS/lectures/pictures/luminanceSlice.jpg',$im6->getWidth(), $im6->getHeight(), luminanceSlice($im6));
-
-//эквализация
-$eq = new Image('/home/oxana/projects/TsOS/lectures/pictures/eq.jpg',$im5->getWidth(), $im5->getHeight(), eq($im5));
+// $add_images = new Image('/home/oxana/projects/TsOS/lectures/pictures/add_images.jpg', $im1->getWidth(), $im1->getHeight(), addImages($im1, $im2)); // сложение двух изображений
+// $sub_images = new Image('/home/oxana/projects/TsOS/lectures/pictures/sub_images.jpg', $im7->getWidth(), $im7->getHeight(), subtractImages($im8, $im7)); //вычитание двух изображений
+$add = new Image('/home/oxana/projects/TsOS/lectures/pictures/add.jpg', $im8->getWidth(), $im8->getHeight(),addConstant($im8, -105)); //добавление константы
+// $multiplication = new Image('/home/oxana/projects/TsOS/lectures/pictures/multiplicate.jpg', $im1->getWidth(), $im1->getHeight(), multiplicateConstant($im1, 0.75)); // умножение на константу
+// $masling = new Image('/home/oxana/projects/TsOS/lectures/pictures/masking.jpg',$im5->getWidth(), $im5->getHeight(), masking($im5)); // маскирование
+//
+// //логические операции
+// $not = new Image('/home/oxana/projects/TsOS/lectures/pictures/not.jpg',$im4->getWidth(), $im4->getHeight(), notFunc($im4));
+// $xor = new Image('/home/oxana/projects/TsOS/lectures/pictures/xor.jpg',$im4->getWidth(), $im4->getHeight(), xorFunc($im3, $im4));
+// $or = new Image('/home/oxana/projects/TsOS/lectures/pictures/or.jpg',$im4->getWidth(), $im4->getHeight(), orFunc($im3, $im4));
+// $and = new Image('/home/oxana/projects/TsOS/lectures/pictures/and.jpg',$im4->getWidth(), $im4->getHeight(), andFunc($im3, $im4));
+//
+// //пилообразный срез
+// $luminanceSlice = new Image('/home/oxana/projects/TsOS/lectures/pictures/luminanceSlice.jpg',$im6->getWidth(), $im6->getHeight(), luminanceSlice($im6));
+//
+// //эквализация
+// $eq = new Image('/home/oxana/projects/TsOS/lectures/pictures/eq.jpg',$im5->getWidth(), $im5->getHeight(), eq($im5));
