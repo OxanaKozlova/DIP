@@ -76,6 +76,8 @@ class UserImage{
 
    }
 
+
+
    public function scanning()
    {
 
@@ -303,9 +305,6 @@ function clasterAnalysis(){
           $this->claster1 = $claster1;
           $this->claster2 = $claster2;
 
-          // var_dump($claster1->values);
-          // var_dump($claster2->values);
-
 
           break;
         }
@@ -355,6 +354,8 @@ function clasterAnalysis(){
 
 
 
+
+
 function calculate_median($arr) {
     $count = count($arr); //total numbers in array
     $middleval = floor(($count-1)/2); // find the middle value, or the lowest middle value
@@ -377,6 +378,21 @@ function calculateDistance($claster, $point){
 
 
 }
+
+function checkGarbage($values){
+  $temp = [];
+ foreach($values as  $value){
+   if($value->square > 500 && $value->square != 1000 && $value->square !=3863 &&$value->square !=998 ){
+      $temp [] = $value;
+   }
+
+ }
+
+ return $temp;
+
+}
+
+
 function returnImage(){
   $im = new UserImage();
   $im->getImage('/home/oxana/projects/TsOS/P0001461.jpg');
@@ -386,8 +402,9 @@ function returnImage(){
   $im->getSquare();
   $im->getPerimeters();
   $im->getDensity();
-//  $im->getCentreOfMass();
+  $im->getCentreOfMass();
   $temp = $im->getImageObjects();
-//  $im->clasterAnalysis();
+  $temp = checkGarbage($temp);
+  $im->clasterAnalysis();
   return $temp;
 }

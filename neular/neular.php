@@ -14,6 +14,7 @@ $temp_d = [];
 
 function teach($x_r, $y_r){
   global $v, $w, $q, $t, $d, $temp_d;
+  $x_r = normalization($x_r);
 
   $g = setG($x_r);
   $y = setY($g);
@@ -127,17 +128,19 @@ function activate($item){
 
 function recognition($x){
   global $v, $w, $q, $t;
-  echo "suqare {$x[0]}\n";
-  echo "perimeter {$x[1]}\n";
-  echo "density {$x[2]}\n";
+
+  // echo "perimeter {$x[1]}\n";
+  // echo "density {$x[2]}\n";
   $g_temp = setG( $x);
   $y_temp = setY($g_temp);
+  var_dump($y_temp);
+
   if($y_temp[0] < $y_temp[1])
   {
-    echo "sugar\n";
+    echo "spoon\n";
   }
   else{
-    echo "spoon\n";
+    echo "sugar\n";
   }
   echo "\n";
 
@@ -155,7 +158,7 @@ function firstInitializationMatrix($n, $m){
 function firstInitializationArray($n){
   $temp = [];
   for($i = 0; $i < $n; $i++){
-    $temp[$i] = 1;
+    $temp[$i] =1;
   }
   return $temp;
 }
@@ -166,25 +169,44 @@ function firstInitializationArray($n){
 // array(0,1),array(0,1),array(0,1), array(0,1));
 
 
- $xx = array(array(1040, 115,12.7),
-      array(1080,116, 12.45),
+ $xx = array(array(1040, 115, 12.7),
+            array(4054, 411, 41.67),
+      array(1080, 116, 12.45),
+      array(3863, 404, 42.25),
     array(942, 100, 10.62),
-array(1000, 95, 9.025),
+    array(4057, 410, 41.43),
+array(998, 93, 8.7),
 array(3809, 343, 30.88),
-array(4057, 410, 41.43),
-array(3863, 404, 42.25),
-array(4054, 411, 41.67));
- $yy = array(array(1,0),array(1,0),array(1,0),array(1,0),
-  array(0,1), array(0,1), array(0,1), array(0,1));
+array(1000, 95, 9.025),
+array(4000, 340, 39.88),
 
 
+
+
+);
+ $yy = array(array(1,0),array(0,1),array(1,0),array(0,1),
+  array(1,0), array(0,1), array(1,0), array(0,1),array(1,0), array(0,1));
+
+function normalization($vector){
+  $norm = [];
+  for($i = 0; $i < count($vector); $i++){
+    $temp = 0;
+    for($j = 0; $j < count($vector); $j++){
+      $temp += pow($vector[$j], 2);
+    }
+    $norm[$i] = $vector[$i]/sqrt($temp);
+  }
+
+  return $norm;
+
+}
 
 $v = firstInitializationMatrix(3, 2);
 $w = firstInitializationMatrix(2, 2);
 $q = firstInitializationArray(2);
 $t = firstInitializationArray(2);
 
-$D = 0.6;
+$D = 0.4;
 do{
   for($i = 0; $i < count($xx); $i++){
     $temp_d = [];
@@ -197,5 +219,8 @@ do{
 
 $images = returnImage();
 foreach($images as $image){
-  recognition(array($image->square, $image->perimeter, $image->density));
+  $temp = normalization(array($image->square, $image->perimeter, $image->density));
+  echo "suqare {$image->square}\n";
+  recognition(array($temp[0], $temp[1], $temp[2]));
 }
+//recognition(array(900, 100, 10));
